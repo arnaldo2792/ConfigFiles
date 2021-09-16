@@ -1,1 +1,1 @@
-let g:NERDTreeIgnore = ['^build$']
+let g:NERDTreeIgnore = ['^build$', '^target$']

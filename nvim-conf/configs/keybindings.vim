@@ -11,4 +11,6 @@ nnoremap <S-h> :bp<CR>
 
 nnoremap <leader>b :NERDTreeToggle<CR>
 nnoremap <leader>bf :NERDTreeFind<CR>
-nmap <silent> \ge <Plug>(coc-definition)
+nnoremap gd :ALEGoToDefinition<CR>
+
+nnoremap <leader>a :Ack!<Space>

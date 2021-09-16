@@ -12,6 +12,7 @@ call plug#begin('~/.vim/plugged')
 	Plug 'vim-airline/vim-airline'
 	Plug 'dracula/vim', { 'as': 'dracula' }
 	Plug 'vim-airline/vim-airline-themes'
+  Plug 'dag/vim-fish'
 
   " LSP
   Plug 'dense-analysis/ale'
