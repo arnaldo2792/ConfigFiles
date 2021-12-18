@@ -19,6 +19,7 @@ execute "set t_8b=\e[48;2;%lu;%lu;%lum"
 set background=dark cursorline
 set noruler
 set noshowmode
+set number
 
 let g:airline_theme='deus'
 let g:airline#extensions#tabline#enabled = 1

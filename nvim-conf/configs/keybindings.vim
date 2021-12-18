@@ -14,3 +14,4 @@ nnoremap <leader>bf :NERDTreeFind<CR>
 nnoremap gd :ALEGoToDefinition<CR>
 
 nnoremap <leader>a :Ack!<Space>
+nnoremap <C-p> :FZF<CR>
