@@ -6,5 +6,8 @@ if ! is-laptop
   setup-gpg-agent
 end
 
+# Set fisher path
+set -gx fisher_path $HOME/.local/fisher
+
 # Setup fzf key bindings
-fzf_key_bindings
+setup_fzf_key_bindings
