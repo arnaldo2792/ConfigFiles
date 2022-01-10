@@ -9,5 +9,8 @@ end
 # Set fisher path
 set -gx fisher_path $HOME/.local/fisher
 
+# Set default FZF_DEFAULT_COMMAND
+set -gx FZF_DEFAULT_COMMAND "rg --files"
+
 # Setup fzf key bindings
 setup_fzf_key_bindings
