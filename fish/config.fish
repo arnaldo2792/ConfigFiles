@@ -14,3 +14,6 @@ set -gx FZF_DEFAULT_COMMAND "rg --files"
 
 # Setup fzf key bindings
 setup_fzf_key_bindings
+
+# Start starship
+starship init fish | source
