@@ -1,4 +1,6 @@
 function ssh
-  setup-ssh-agent
+  if ! is-laptop
+    setup-ssh-agent
+  end
   command ssh $argv
 end
