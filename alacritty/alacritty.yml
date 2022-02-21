@@ -1,10 +1,7 @@
 font:
   normal:
-    family: 'Firacode'
+    family: 'Fira Code'
   size: 14
-
-shell:
-  program: /usr/bin/fish
 
 # Colors (Dracula)
 colors:
