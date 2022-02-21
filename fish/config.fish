@@ -5,9 +5,6 @@ if status is-interactive
     setup-ssh-agent
   end
 
-  # Set fisher path
-  set -gx fisher_path $HOME/.local/fisher
-
   # Set default FZF_DEFAULT_COMMAND
   set -gx FZF_DEFAULT_COMMAND "rg --files"
 
