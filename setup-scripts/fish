@@ -1,0 +1,77 @@
+#! /usr/bin/env fish
+
+# fish_path is the mount unit's file name
+set --local fish_path (systemd-escape --path $__fish_config_dir).mount
+set --local template_path /tmp/$fish_path
+set --local systemd_path /etc/systemd/system/
+
+# If the mount unit doesn't exists
+if ! test -f $systemd_path$fish_path
+  set --query config_path || set --local config_path $HOME/Code/personal/ConfigFiles
+  set --local mount_in_path $config_path/systemd/system/fish.mount.in
+
+  if ! test -f $mount_in_path
+    echo "Couldn't find mount unit '$mount_in_path'"
+    exit 1
+  end
+
+  # Prepare overlay filesystem structure
+
+  # fish_lowerdir is the path to the low layer of the overlay filesystem, usually should be
+  # a directory with shared configurations
+  set --query fish_lowerdir || set --local fish_lowerdir $HOME/.local/overlay/fish/lowerdir
+  # fish_upperdir is the path to the 'upperdir' option of the overlay filesystem, this
+  # will be used by fisher to store plugin files
+  set --query fish_upperdir || set --local fish_upperdir $HOME/.local/overlay/fish/fisher
+  # fish_workdir is the path to the 'workdir' option of the overlay filesystem
+  set --query fish_workdir || set --local fish_workdir $HOME/.local/overlay/fish/workdir
+
+  if ! test -d $fish_lowerdir; or ! test -L $fish_lowerdir
+    echo "Creating symlink to $config_path/fish in $fish_lowerdir"
+    # Create symlink to fish folder in $config_path
+    ln -s $config_path/fish $fish_lowerdir
+  end
+
+  mkdir -p {$fish_upperdir,$fish_workdir}
+  echo -e "Directories created: $fish_upperdir, \n $fish_workdir"
+
+  # If home is mounted, wait for it
+  cat /proc/self/mountinfo | awk '
+    { if ($5 == "/home") { f="true" } }
+    END { if (f=="true") { print $5; exit 0 } else { exit 1 } }
+  '
+  if test $status -eq 0
+    set requires_mount "RequiresMountFor=/home"
+  end
+
+  # Replace variables in template
+  sed -e "s|FISH_CONFIG_DIR|$__fish_config_dir|" $mount_in_path \
+    | sed -e "s|FISH_LOWERDIR|$fish_lowerdir|" \
+    | sed -e "s|FISH_UPPERDIR|$fish_upperdir|" \
+    | sed -e "s|FISH_WORKDIR|$fish_workdir|"   \
+    | sed -e "s|USER|$USER|" \
+    | sed -e "s|REQUIRES_MOUNT_FOR|$requires_mount|" > $template_path
+
+  echo "Copying temp file $template_path to '$systemd_path'"
+  sudo cp $template_path $systemd_path
+end
+
+if ! systemctl is-active $fish_path 1>/dev/null
+  echo "Enabling $systemd_path$fish_path"
+  sudo systemctl enable $fish_path
+
+  echo "Reloading systemd daemon"
+  sudo systemctl daemon-reload
+
+  echo "Starting mount unit"
+  sudo systemctl start $fish_path
+end
+
+
+if ! type fisher -q
+  echo "Installing fisher"
+  curl -sL https://git.io/fisher | source
+end
+
+echo "Installing plugins"
+fisher update

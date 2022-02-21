@@ -1,0 +1,14 @@
+[Unit]
+Description=USER's fish config directory
+Conflicts=umount.target
+Before=local-fs.target umount.target
+REQUIRES_MOUNT_FOR
+
+[Mount]
+What=overlay
+Where=FISH_CONFIG_DIR
+Type=overlay
+Options=lowerdir=FISH_LOWERDIR,upperdir=FISH_UPPERDIR,workdir=FISH_WORKDIR
+
+[Install]
+WantedBy=local-fs.target
