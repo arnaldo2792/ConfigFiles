@@ -15,4 +15,7 @@ fi
 eval $(gnome-keyring-daemon --start)
 export SSH_AUTH_SOCK
 
+# Setup monitor
+enable-monitor
+
 exec awesome
