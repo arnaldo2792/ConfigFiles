@@ -26,14 +26,14 @@ if ! test -f $systemd_path$fish_path
   # fish_workdir is the path to the 'workdir' option of the overlay filesystem
   set --query fish_workdir || set --local fish_workdir $HOME/.local/overlay/fish/workdir
 
+  mkdir -p {$fish_upperdir,$fish_workdir}
+  echo -e "Directories created: $fish_upperdir, \n $fish_workdir"
+
   if ! test -d $fish_lowerdir; or ! test -L $fish_lowerdir
     echo "Creating symlink to $config_path/fish in $fish_lowerdir"
     # Create symlink to fish folder in $config_path
     ln -s $config_path/fish $fish_lowerdir
   end
-
-  mkdir -p {$fish_upperdir,$fish_workdir}
-  echo -e "Directories created: $fish_upperdir, \n $fish_workdir"
 
   # If home is mounted, wait for it
   cat /proc/self/mountinfo | awk '
