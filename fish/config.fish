@@ -24,7 +24,7 @@ if status is-login
   # Set GOPATH
   set -x GOPATH $HOME/.local/go/path
 
-  if test -z "$DISPLAY" -a $XDG_VTNR = 1
+  if set --query XDG_VTNR; and test $XDG_VTNR = 1 -a -z "$DISPLAY"
     exec startx --keeptty
   end
 end
