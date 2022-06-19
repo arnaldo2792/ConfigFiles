@@ -4,10 +4,11 @@ call plug#begin('~/.vim/plugged')
 	Plug 'tpope/vim-fugitive'
 
 	" General Tools
-  Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-  Plug 'junegunn/fzf.vim'
   Plug 'preservim/nerdtree'
-  Plug 'mileszs/ack.vim'
+  Plug 'junegunn/goyo.vim'
+  Plug 'nvim-lua/plenary.nvim'
+  Plug 'nvim-telescope/telescope.nvim'
+  Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
 
 	" Color schemes / Styles
 	Plug 'vim-airline/vim-airline'

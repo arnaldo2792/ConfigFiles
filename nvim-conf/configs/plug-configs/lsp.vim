@@ -23,6 +23,17 @@ local opts = {
 }
 
 require('rust-tools').setup(opts)
+
+require'lspconfig'.ltex.setup({
+  filetypes = { "gitcommit", "markdown", "plaintext", "go", "rust" },
+  settings = {
+    ltex = {
+      checkFrequency = "edit",
+      enabled = { "markdown", "html", "latex", "go", "rust" }
+    }
+  }
+ }
+)
 EOF
 
 " Format on save in rust files
