@@ -17,6 +17,8 @@ end
 
 if status is-login
   set -x PATH $PATH $HOME/.cargo/bin $HOME/.local/go/root/bin $HOME/.local/go/path/bin $HOME/.local/bin
+  # Set java home
+  set -gx JAVA_HOME (dirname (dirname (readlink -f (which javac))))
 
   if test -z "$DISPLAY" -a $XDG_VTNR = 1
     exec startx --keeptty
