@@ -1,17 +1,17 @@
 set completeopt=menuone,noinsert,noselect
 
 lua <<EOF
+local rt = require('rust-tools')
+
 local opts = {
-  tools = {
-      autoSetHints = true,
-      hover_with_actions = true,
-      inlay_hints = {
-        show_parameter_hints = false,
-        parameter_hints_prefix = "",
-        other_hints_prefix = "",
-      },
+  hover_actions = {
+    auto_focus = true,
   },
   server = {
+    on_attach = function(_, bufnr)
+      -- Hover actions
+      vim.keymap.set("n", "<C-space>", rt.hover_actions.hover_actions, { buffer = bufnr })
+    end,
     settings = {
       ["rust-analyzer"] = {
         checkOnSave = {
@@ -22,7 +22,7 @@ local opts = {
   },
 }
 
-require('rust-tools').setup(opts)
+rt.setup(opts)
 
 require'lspconfig'.ltex.setup({
   filetypes = { "gitcommit", "markdown", "plaintext", "go", "rust" },

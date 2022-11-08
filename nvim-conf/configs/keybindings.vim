@@ -15,6 +15,8 @@ nnoremap <leader>bf :NERDTreeFind<CR>
 " Telescope bindings
 nnoremap <C-p> <cmd>Telescope find_files<CR>
 nnoremap <C-f> <cmd>Telescope live_grep<CR>
+nnoremap <C-g> <cmd>Telescope git_status<CR>
+nnoremap <leader>r <cmd>Telescope lsp_references<CR>
 
 " LSP
 augroup lsp
