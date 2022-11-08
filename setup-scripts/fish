@@ -1,12 +1,27 @@
 #! /usr/bin/env fish
 
+# Read flags
+set --local args (getopt -s sh 'i' $argv)
+set --local splitted (string split ' ' $args -n)
+set --local ignore_mount 0
+
+while test (count $splitted) -gt 0
+  switch $splitted[1]
+    case -i 
+      set ignore_mount 1
+      set --erase splitted[1]
+    case --
+      break
+  end
+end
+
 # fish_path is the mount unit's file name
 set --local fish_path (systemd-escape --path $__fish_config_dir).mount
 set --local template_path /tmp/$fish_path
 set --local systemd_path /etc/systemd/system/
 
-# If the mount unit doesn't exists
-if ! test -f $systemd_path$fish_path
+# If the mounts unit must be created and it doesn't exist
+if test $ignore_mount -eq 0; and ! test -f $systemd_path$fish_path
   set --query config_path || set --local config_path $HOME/Code/personal/ConfigFiles
   set --local mount_in_path $config_path/systemd/system/fish.mount.in
 
@@ -56,7 +71,8 @@ if ! test -f $systemd_path$fish_path
   sudo cp $template_path $systemd_path
 end
 
-if ! systemctl is-active $fish_path 1>/dev/null
+# Activate the mount only when it is required
+if test $ignore_mount -eq 0; and ! systemctl is-active $fish_path 1>/dev/null
   echo "Enabling $systemd_path$fish_path"
   sudo systemctl enable $fish_path
 
@@ -65,6 +81,10 @@ if ! systemctl is-active $fish_path 1>/dev/null
 
   echo "Starting mount unit"
   sudo systemctl start $fish_path
+end
+
+if test $ignore_mount -eq 1
+  echo "Won't set up mounts"
 end
 
 
