@@ -34,6 +34,8 @@ require'lspconfig'.ltex.setup({
   }
  }
 )
+
+require'lspconfig'.gopls.setup{}
 EOF
 
 " Format on save in rust files
