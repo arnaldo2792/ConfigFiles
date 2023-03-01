@@ -54,6 +54,9 @@ beautiful.init(config_path .. "theme.lua")
 -- This is used later as the default terminal.
 terminal = "alacritty"
 
+-- This is used to lock the screen
+lock = "lock"
+
 -- Default modkey.
 modkey = "Mod4"
 
@@ -179,6 +182,8 @@ globalkeys = gears.table.join(
               {description = "focus the next screen", group = "screen"}),
     awful.key({ modkey, "Control" }, "k", function () awful.screen.focus_relative(-1) end,
               {description = "focus the previous screen", group = "screen"}),
+    awful.key({ modkey, "Control" }, "l", function () awful.spawn(lock) end,
+              {description = "locks the screen", group = "screen"}),
     awful.key({ modkey,           }, "u", awful.client.urgent.jumpto,
               {description = "jump to urgent client", group = "client"}),
     awful.key({ modkey,           }, "Tab",
