@@ -1,0 +1,15 @@
+#! /usr/bin/env fish
+
+set --local user_id (id -u)
+set --local user_path "/tmp/$user_id"
+set --local screenshot "$user_path/screenshot.png"
+
+if ! test -d $user_path
+  mkdir -p $user_path
+end
+
+# Remove previous screenshot
+rm -f $screenshot
+scrot $screenshot
+convert $screenshot -blur 0x20 $screenshot
+i3lock -i $screenshot
