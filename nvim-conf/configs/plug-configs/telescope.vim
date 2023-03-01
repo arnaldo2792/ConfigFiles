@@ -5,7 +5,8 @@ telescope.load_extension('fzf')
 
 telescope.setup {
   defaults = {
-    prompt_prefix = "🔍"
+    prompt_prefix = "🔍",
+    color_devicons = true
   },
   extensions = {
     fzf = {

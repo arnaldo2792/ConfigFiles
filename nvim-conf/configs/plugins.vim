@@ -15,6 +15,8 @@ call plug#begin('~/.vim/plugged')
 	Plug 'dracula/vim', { 'as': 'dracula' }
 	Plug 'vim-airline/vim-airline-themes'
   Plug 'dag/vim-fish'
+  Plug 'ryanoasis/vim-devicons'
+  Plug 'kyazdani42/nvim-web-devicons'
 
   " LSP
   Plug 'neovim/nvim-lspconfig'
