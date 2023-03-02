@@ -20,5 +20,5 @@ set background=dark cursorline
 set noruler
 set noshowmode
 set number
-
+set colorcolumn=80
 set foldmethod=syntax

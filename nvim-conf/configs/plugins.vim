@@ -9,6 +9,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'nvim-lua/plenary.nvim'
   Plug 'nvim-telescope/telescope.nvim'
   Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
+  Plug 'jeffkreeftmeijer/vim-numbertoggle'
 
 	" Color schemes / Styles
 	Plug 'vim-airline/vim-airline'
