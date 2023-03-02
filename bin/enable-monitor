@@ -10,15 +10,15 @@ if grep -qi SYSTEM76 ${BOARD_VENDOR}; then
     xrandr --output eDP1 --mode 1920x1080 \
       --dpi 144 --primary
   fi
-# Thinkpad laptop
-elif grep -qi LENOVO ${BOARD_VENDOR}; then
+# Thinkpad laptop or HP laptop
+elif grep -Eqi 'LENOVO|HP' ${BOARD_VENDOR}; then
   if xrandr -q | grep -qF 'DP-2 connected'; then
     xrandr --output DP-2 --mode 1920x1080 --left-of eDP-1 \
       --dpi 144 --primary
     xrandr --output eDP-1 --mode 1920x1080 \
-      --dpi 144 --scale .75x.75
+      --dpi 144 
   else
     xrandr --output eDP-1 --mode 1920x1080 \
-      --dpi 144 --scale .75x.75 --primary
+      --dpi 144 --primary
   fi
 fi
