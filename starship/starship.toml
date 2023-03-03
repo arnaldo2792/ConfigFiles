@@ -20,3 +20,8 @@ disabled = true
 
 [directory]
 truncation_length = 1
+
+[os]
+format = "on [($name )]($style)"
+disabled = false
+style = "bold blue"
