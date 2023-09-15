@@ -17,6 +17,9 @@ local opts = {
         checkOnSave = {
           command = "clippy"
         },
+        procMacro = {
+          enable = true
+        }
       }
     }
   },
@@ -36,11 +39,14 @@ require'lspconfig'.ltex.setup({
 )
 
 require'lspconfig'.gopls.setup{}
+
+require'lspconfig'.clangd.setup{}
+
 EOF
 
 " Format on save in rust files
 augroup lsp
-  autocmd BufWritePre *.rs lua vim.lsp.buf.formatting_sync(nil, 200)
+  autocmd BufWritePre *.rs lua vim.lsp.buf.format()
   " Show diagnostic popup on cursor hold
   autocmd CursorHold *.rs lua vim.diagnostic.open_float(nil, { focusable = false })
 augroup END
