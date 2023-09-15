@@ -1,7 +1,6 @@
 if status is-interactive
   if ! is-laptop;
     # start key agents
-    setup-gpg-agent
     setup-ssh-agent
   end
 
