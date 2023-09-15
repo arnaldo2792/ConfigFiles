@@ -3,6 +3,7 @@ set timeoutlen=500 ttimeoutlen=0
 filetype plugin indent on
 set ts=2 sts=0 expandtab shiftwidth=2
 set omnifunc=syntaxcomplete#Complete
+set mouse=
 
 " Ignore Paths
 set wildignore+=*/node_modules/*
