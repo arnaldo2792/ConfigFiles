@@ -20,16 +20,16 @@ nnoremap <leader>r <cmd>Telescope lsp_references<CR>
 
 " LSP
 augroup lsp
-  autocmd FileType rust,gitcommit,markdown,go,c nnoremap <silent> gD <cmd>lua vim.lsp.buf.implementation()<CR>
-  autocmd FileType rust,gitcommit,markdown,go,c nnoremap <silent> gd <cmd>lua vim.lsp.buf.definition()<CR>
-  autocmd FileType rust,gitcommit,markdown,go,c nnoremap <silent> gk <cmd>lua vim.lsp.buf.signature_help()<CR>
-  autocmd FileType rust,gitcommit,markdown,go,c nnoremap <silent> gr <cmd>lua vim.lsp.buf.references()<CR>
-  autocmd FileType go,rust,gitcommit,markdown,go,c nnoremap <silent> ga <cmd>lua vim.lsp.buf.code_action()<CR>
-  autocmd FileType rust,gitcommit,markdown,go,c nnoremap <silent> gh <cmd>lua vim.lsp.buf.hover()<CR>
+  autocmd FileType rust,gitcommit,markdown,go,c,typescript nnoremap <silent> gD <cmd>lua vim.lsp.buf.implementation()<CR>
+  autocmd FileType rust,gitcommit,markdown,go,c,typescript nnoremap <silent> gd <cmd>lua vim.lsp.buf.definition()<CR>
+  autocmd FileType rust,gitcommit,markdown,go,c,typescript nnoremap <silent> gk <cmd>lua vim.lsp.buf.signature_help()<CR>
+  autocmd FileType rust,gitcommit,markdown,go,c,typescript nnoremap <silent> gr <cmd>lua vim.lsp.buf.references()<CR>
+  autocmd FileType go,rust,gitcommit,markdown,go,c,typescript nnoremap <silent> ga <cmd>lua vim.lsp.buf.code_action()<CR>
+  autocmd FileType rust,gitcommit,markdown,go,c,typescript nnoremap <silent> gh <cmd>lua vim.lsp.buf.hover()<CR>
 
   "" Goto previous/next diagnostic warning/error
-  autocmd FileType go,rust,gitcommit,markdown,c nnoremap <silent> g[ <cmd>lua vim.diagnostic.goto_prev()<CR>
-  autocmd FileType go,rust,gitcommit,markdown,c nnoremap <silent> g] <cmd>lua vim.diagnostic.goto_next()<CR>
+  autocmd FileType go,rust,gitcommit,markdown,c,typescript nnoremap <silent> g[ <cmd>lua vim.diagnostic.goto_prev()<CR>
+  autocmd FileType go,rust,gitcommit,markdown,c,typescript nnoremap <silent> g] <cmd>lua vim.diagnostic.goto_next()<CR>
 augroup END
 
 augroup vpm
