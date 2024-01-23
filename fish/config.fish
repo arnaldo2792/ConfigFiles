@@ -15,10 +15,12 @@ if status is-interactive
 end
 
 if status is-login
-  set -x PATH $PATH $HOME/.cargo/bin $HOME/.local/go/root/bin $HOME/.local/go/path/bin $HOME/.local/bin
+  set -x PATH $HOME/.local/bin $PATH $HOME/.cargo/bin $HOME/.local/go/root/bin $HOME/.local/go/path/bin 
 
-  # Set java home
-  set -gx JAVA_HOME (dirname (dirname (readlink -f (which javac))))
+  # Set java home if java is present
+  if type -q javac
+    set -gx JAVA_HOME (dirname (dirname (readlink -f (which javac))))
+  end
 
   # Set GOPATH
   set -x GOPATH $HOME/.local/go/path
