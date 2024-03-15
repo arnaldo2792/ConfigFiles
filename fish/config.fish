@@ -7,6 +7,9 @@ if status is-interactive
   # Set default FZF_DEFAULT_COMMAND
   set -gx FZF_DEFAULT_COMMAND "rg --files"
 
+  # Set editor env variable
+  set -gx EDITOR "nvim"
+
   # Setup fzf key bindings
   setup_fzf_key_bindings
 
@@ -24,8 +27,4 @@ if status is-login
 
   # Set GOPATH
   set -x GOPATH $HOME/.local/go/path
-
-  if set --query XDG_VTNR; and test $XDG_VTNR = 1 -a -z "$DISPLAY"
-    exec startx --keeptty
-  end
 end
