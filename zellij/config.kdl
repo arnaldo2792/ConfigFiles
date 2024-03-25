@@ -4,9 +4,8 @@ keybinds {
         unbind "Ctrl s"
         unbind "Ctrl p"
         unbind "Ctrl g"
-        bind "Ctrl u" { SwitchToMode "Scroll"; }
+        bind "Ctrl l" { SwitchToMode "Scroll"; }
         bind "Ctrl n" { SwitchToMode "Pane"; }
-        bind "Ctrl l" { SwitchToMode "Locked"; }
     }
     locked {
         bind "Ctrl l" { SwitchToMode "Normal"; }
@@ -149,7 +148,6 @@ keybinds {
         bind "x" { CloseFocus; SwitchToMode "Normal"; }
     }
     shared_except "locked" {
-        bind "Ctrl l" { SwitchToMode "Locked"; }
         bind "Ctrl q" { Quit; }
         bind "Ctrl k" { Clear; }
         bind "Alt n" { NewPane; }
@@ -295,7 +293,7 @@ theme "dracula"
 //   - true (default)
 //   - false
 //
-// mouse_mode false
+mouse_mode false
 
 // Configure the scroll back buffer size
 // This is the number of lines zellij stores for each pane in the scroll back
