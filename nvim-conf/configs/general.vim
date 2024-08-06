@@ -23,3 +23,5 @@ set noshowmode
 set number
 set colorcolumn=80
 set foldmethod=syntax
+
+call neomake#configure#automake('w')

@@ -26,6 +26,7 @@ augroup lsp
   autocmd FileType rust,gitcommit,markdown,go,c,typescript nnoremap <silent> gr <cmd>lua vim.lsp.buf.references()<CR>
   autocmd FileType go,rust,gitcommit,markdown,go,c,typescript nnoremap <silent> ga <cmd>lua vim.lsp.buf.code_action()<CR>
   autocmd FileType rust,gitcommit,markdown,go,c,typescript nnoremap <silent> gh <cmd>lua vim.lsp.buf.hover()<CR>
+  autocmd FileType rust,gitcommit,markdown,go,c,typescript nnoremap <silent> rn <cmd>lua vim.lsp.buf.rename()<CR>
 
   "" Goto previous/next diagnostic warning/error
   autocmd FileType go,rust,gitcommit,markdown,c,typescript nnoremap <silent> g[ <cmd>lua vim.diagnostic.goto_prev()<CR>

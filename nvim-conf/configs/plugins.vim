@@ -18,6 +18,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'dag/vim-fish'
   Plug 'ryanoasis/vim-devicons'
   Plug 'kyazdani42/nvim-web-devicons'
+  Plug 'mustache/vim-mustache-handlebars'
 
   " LSP
   Plug 'neovim/nvim-lspconfig'
@@ -25,6 +26,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'hrsh7th/cmp-nvim-lsp'
   Plug 'hrsh7th/cmp-vsnip'
   Plug 'hrsh7th/vim-vsnip'
+  Plug 'neomake/neomake'
 
   " Rust
   Plug 'simrat39/rust-tools.nvim'
