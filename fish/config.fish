@@ -15,6 +15,9 @@ if status is-interactive
 
   # Start starship
   starship init fish | source
+
+  # Setup zoxide
+  zoxide init fish | source
 end
 
 if status is-login
