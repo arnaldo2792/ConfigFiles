@@ -1,5 +1,5 @@
 format = """
-[┌───────────────────>](bold green) $directory$os
+[┌───────────────────>](bold green) $hostname$directory
 [└─>](bold green) $all"""
 
 add_newline = false
@@ -11,7 +11,7 @@ disabled = true
 disabled = true
 
 [hostname]
-disabled = true
+ssh_only = false
 
 [cmd_duration]
 disabled = true
@@ -27,6 +27,4 @@ truncate_to_repo = false
 truncation_length = 0
 
 [os]
-format = "on [($name )]($style)"
-disabled = false
-style = "bold blue"
+disabled = true
