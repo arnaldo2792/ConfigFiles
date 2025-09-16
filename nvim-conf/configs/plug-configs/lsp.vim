@@ -27,22 +27,9 @@ local opts = {
 
 rt.setup(opts)
 
-require'lspconfig'.ltex.setup({
-  filetypes = { "gitcommit", "markdown", "plaintext", "go", "rust" },
-  settings = {
-    ltex = {
-      checkFrequency = "edit",
-      enabled = { "markdown", "html", "latex", "go", "rust" }
-    }
-  }
- }
-)
-
 require'lspconfig'.gopls.setup{}
 
 require'lspconfig'.clangd.setup{}
-
-require'lspconfig'.tsserver.setup {}
 
 require'lspconfig'.eslint.setup({
   on_attach = function(client, bufnr)
