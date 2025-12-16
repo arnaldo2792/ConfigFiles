@@ -1,0 +1,29 @@
+layout {
+  tab_template name="bottlerocket-dev" {
+    pane {
+      pane size="80%"
+      pane size="20%" 
+    }
+    pane size=1 borderless=true {
+        plugin location="compact-bar"
+    }
+  }
+
+  new_tab_template {
+    pane
+    pane size=1 borderless=true {
+        plugin location="compact-bar"
+    }
+  }
+
+  bottlerocket-dev name="Bottlerocket"
+  bottlerocket-dev name="Core Kit"
+  bottlerocket-dev name="Kernel Kit"
+
+  tab name="Testing" {
+    pane
+    pane size=1 borderless=true {
+        plugin location="compact-bar"
+    }
+  }
+}
