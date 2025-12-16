@@ -19,6 +19,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'ryanoasis/vim-devicons'
   Plug 'kyazdani42/nvim-web-devicons'
   Plug 'mustache/vim-mustache-handlebars'
+  Plug 'imsnif/kdl.vim'
 
   " LSP
   Plug 'neovim/nvim-lspconfig'
